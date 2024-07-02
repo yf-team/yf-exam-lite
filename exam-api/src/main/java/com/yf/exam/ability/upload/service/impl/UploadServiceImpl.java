@@ -48,13 +48,10 @@ public class UploadServiceImpl implements UploadService {
         if(!allow){
             throw new ServiceException("文件类型不允许上传！");
         }
-
         // 上传文件夹
         String fileDir = conf.getDir();
-
         // 真实物理地址
         String fullPath;
-
         try {
 
             // 新文件
