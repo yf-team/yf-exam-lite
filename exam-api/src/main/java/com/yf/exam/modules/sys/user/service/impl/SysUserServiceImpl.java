@@ -1,20 +1,20 @@
 package com.yf.exam.modules.sys.user.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.yf.exam.ability.shiro.jwt.JwtUtils;
 import com.yf.exam.core.api.ApiError;
 import com.yf.exam.core.api.dto.PagingReqDTO;
 import com.yf.exam.core.enums.CommonState;
 import com.yf.exam.core.exception.ServiceException;
 import com.yf.exam.core.utils.BeanMapper;
+import com.yf.exam.core.utils.jackson.JsonHelper;
 import com.yf.exam.core.utils.passwd.PassHandler;
 import com.yf.exam.core.utils.passwd.PassInfo;
-import com.yf.exam.ability.shiro.jwt.JwtUtils;
 import com.yf.exam.modules.sys.user.dto.SysUserDTO;
 import com.yf.exam.modules.sys.user.dto.request.SysUserSaveReqDTO;
 import com.yf.exam.modules.sys.user.dto.response.SysUserLoginDTO;
@@ -72,7 +72,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         //获得数据
         IPage<SysUser> page = this.page(query, wrapper);
         //转换结果
-        IPage<SysUserDTO> pageData = JSON.parseObject(JSON.toJSONString(page), new TypeReference<Page<SysUserDTO>>(){});
+        IPage<SysUserDTO> pageData = JsonHelper.parseObject(page, new TypeReference<Page<SysUserDTO>>(){});
         return pageData;
      }
 

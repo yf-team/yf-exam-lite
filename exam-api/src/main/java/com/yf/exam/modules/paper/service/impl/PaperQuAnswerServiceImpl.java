@@ -1,12 +1,12 @@
 package com.yf.exam.modules.paper.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.yf.exam.core.api.dto.PagingReqDTO;
+import com.yf.exam.core.utils.jackson.JsonHelper;
 import com.yf.exam.modules.paper.dto.PaperQuAnswerDTO;
 import com.yf.exam.modules.paper.dto.ext.PaperQuAnswerExtDTO;
 import com.yf.exam.modules.paper.entity.PaperQuAnswer;
@@ -39,7 +39,7 @@ public class PaperQuAnswerServiceImpl extends ServiceImpl<PaperQuAnswerMapper, P
         //获得数据
         IPage<PaperQuAnswer> page = this.page(query, wrapper);
         //转换结果
-        IPage<PaperQuAnswerDTO> pageData = JSON.parseObject(JSON.toJSONString(page), new TypeReference<Page<PaperQuAnswerDTO>>(){});
+        IPage<PaperQuAnswerDTO> pageData = JsonHelper.parseObject(page, new TypeReference<Page<PaperQuAnswerDTO>>(){});
         return pageData;
      }
 

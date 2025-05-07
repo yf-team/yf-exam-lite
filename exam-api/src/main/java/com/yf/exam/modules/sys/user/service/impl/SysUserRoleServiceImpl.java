@@ -1,16 +1,16 @@
 package com.yf.exam.modules.sys.user.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.yf.exam.core.api.dto.PagingReqDTO;
+import com.yf.exam.core.utils.jackson.JsonHelper;
 import com.yf.exam.modules.sys.user.dto.SysUserRoleDTO;
 import com.yf.exam.modules.sys.user.entity.SysUserRole;
 import com.yf.exam.modules.sys.user.mapper.SysUserRoleMapper;
 import com.yf.exam.modules.sys.user.service.SysUserRoleService;
-import com.yf.exam.core.api.dto.PagingReqDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -41,7 +41,7 @@ public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUs
         //获得数据
         IPage<SysUserRole> page = this.page(query, wrapper);
         //转换结果
-        IPage<SysUserRoleDTO> pageData = JSON.parseObject(JSON.toJSONString(page), new TypeReference<Page<SysUserRoleDTO>>(){});
+        IPage<SysUserRoleDTO> pageData = JsonHelper.parseObject(page, new TypeReference<Page<SysUserRoleDTO>>(){});
         return pageData;
      }
 

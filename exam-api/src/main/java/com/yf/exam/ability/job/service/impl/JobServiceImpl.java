@@ -1,9 +1,9 @@
 package com.yf.exam.ability.job.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.yf.exam.ability.job.enums.JobGroup;
 import com.yf.exam.ability.job.service.JobService;
+import com.yf.exam.core.utils.jackson.JsonHelper;
 import lombok.extern.log4j.Log4j2;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,13 +63,13 @@ public class JobServiceImpl implements JobService {
 
             // 有表达式的按表达式
             if(!StringUtils.isEmpty(cron)){
-                log.info("+++++表达式执行:"+ JSON.toJSONString(jobDetail));
+                log.info("+++++表达式执行:"+ JsonHelper.toJson(jobDetail));
                 //表达式调度构建器
                 CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(cron);
                 trigger = TriggerBuilder.newTrigger().withIdentity(jobName, jobGroup).withSchedule(scheduleBuilder).build();
             }else{
                 // 无表达式则立即执行
-                log.info("+++++立即执行:"+ JSON.toJSONString(jobDetail));
+                log.info("+++++立即执行:"+ JsonHelper.toJson(jobDetail));
                 trigger = TriggerBuilder.newTrigger().withIdentity(jobName, jobGroup).startNow().build();
             }
 

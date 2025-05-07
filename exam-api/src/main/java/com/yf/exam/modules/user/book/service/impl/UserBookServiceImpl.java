@@ -1,12 +1,12 @@
 package com.yf.exam.modules.user.book.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.yf.exam.core.api.dto.PagingReqDTO;
+import com.yf.exam.core.utils.jackson.JsonHelper;
 import com.yf.exam.modules.qu.entity.Qu;
 import com.yf.exam.modules.qu.service.QuService;
 import com.yf.exam.modules.user.UserUtils;
@@ -57,7 +57,7 @@ public class UserBookServiceImpl extends ServiceImpl<UserBookMapper, UserBook> i
         //获得数据
         IPage<UserBook> page = this.page(query, wrapper);
         //转换结果
-        IPage<UserBookDTO> pageData = JSON.parseObject(JSON.toJSONString(page), new TypeReference<Page<UserBookDTO>>(){});
+        IPage<UserBookDTO> pageData = JsonHelper.parseObject(page, new TypeReference<Page<UserBookDTO>>(){});
         return pageData;
      }
 

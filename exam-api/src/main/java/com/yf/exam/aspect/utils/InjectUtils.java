@@ -1,8 +1,8 @@
 package com.yf.exam.aspect.utils;
 
-import com.alibaba.fastjson.JSON;
 import com.yf.exam.core.api.ApiError;
 import com.yf.exam.core.api.ApiRest;
+import com.yf.exam.core.utils.jackson.JsonHelper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
@@ -87,7 +87,7 @@ public class InjectUtils {
             ApiRest apiRest = new ApiRest(ApiError.ERROR_10010002);
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json");
-            response.getWriter().write(JSON.toJSONString(apiRest));
+            response.getWriter().write(JsonHelper.toJson(apiRest));
             response.getWriter().close();
 
         }catch (IOException e){

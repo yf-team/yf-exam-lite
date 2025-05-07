@@ -1,6 +1,5 @@
 package com.yf.exam.modules.user.exam.dto;
 
-import com.yf.exam.core.annon.Dict;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -28,7 +27,6 @@ public class UserExamDTO implements Serializable {
     @ApiModelProperty(value = "用户ID", required=true)
     private String userId;
 
-    @Dict(dictTable = "el_exam", dicText = "title", dicCode = "id")
     @ApiModelProperty(value = "考试ID", required=true)
     private String examId;
     
