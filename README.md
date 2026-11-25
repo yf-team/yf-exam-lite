@@ -76,7 +76,7 @@ https://www.ixigua.com/7041491265027834381?utm_source=xiguastudio
 5、Windows通过start.bat运行，Linux运行start.sh运行  
 6、如果无意外，可通过：http://localhost:8101 访问到项目了  
 7、管理员账号密码：admin/admin 学员账号：person/person  
- 
+
 # 其它支持
 网站：https://www.yfhl.net/?plan=osyf
 QQ交流群：865330294
@@ -95,3 +95,12 @@ QQ交流群：865330294
 
 # 开源版&商业版对比
 ![输入图片说明](https://cdn.yfhl.net/lite/compare1.png)
+
+
+
+# 免安装使用类似功能
+
+如果您觉得安装此系统非常麻烦，且功能需求较为单一，可以直接使用云帆轻工具，云帆轻工具不做大而全的系统：签到、报名、问卷、抽奖、分班、准考证、证书、溯源码、打卡、AI 题库、刷题训练、在线考试，每个工具只解决一个具体问题。无需申请、无需下载 App，点开就能创建，把二维码发出去就能收数据。
+
+云帆轻工具：[https://yfbox.cn](https://yfbox.cn)
+
